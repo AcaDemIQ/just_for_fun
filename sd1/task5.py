@@ -29,6 +29,9 @@ def test_empty_list(calc):
     with pytest.raises(ValueError):
         calc.calculate_average([])
 
+def test_one(calc):
+    assert 4 == calc.calculate_average([4])
+
 def test_less_than_min(calc):
     with pytest.raises(ValueError):
         calc.calculate_average([4, -2])
