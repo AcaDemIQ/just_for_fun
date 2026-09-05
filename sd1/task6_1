@@ -1,0 +1,36 @@
+#!/usr/bin/env -S java --source 21
+
+//Sorry for sh script -- I try to run Java script without compiling
+
+public class RaceConditionExample {
+
+    private static int counter = 0;
+    private static Object lock = new Object();
+
+    public static void main(String[] args) {
+        int numberOfThreads = 10;
+        Thread[] threads = new Thread[numberOfThreads];
+
+        for (int i = 0; i < numberOfThreads; i++) {
+            threads[i] = new Thread(() -> {
+                for (int j = 0; j < 100000; j++) {
+                    // Lock obj added to sync counter value
+                    synchronized (lock) {
+			counter++;
+		    }
+                }
+            });
+            threads[i].start();
+        }
+
+        for (int i = 0; i < numberOfThreads; i++) {
+            try {
+                threads[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Final counter value: " + counter);
+    }
+}
