@@ -1,0 +1,33 @@
+#!/usr/bin/env -S java --source 21
+
+//Sorry for sh script -- I try to run Java script without compiling
+
+public class ThreadExample {
+    private static int counter = 0;
+    private static Object obj = new Object();
+
+    public static void main(String[] args) {
+        Runnable task = () -> {
+            for (int i = 0; i < 1000; i++) {
+                synchronized (obj) {
+			counter++;
+		}
+            }
+        };
+
+        Thread thread1 = new Thread(task);
+        Thread thread2 = new Thread(task);
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Counter: " + counter);
+    }
+}
