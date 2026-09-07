@@ -17,3 +17,7 @@ if __name__ == "__main__":
         for a in arr:
             res = a.result() + res
         print(res)
+
+
+
+
