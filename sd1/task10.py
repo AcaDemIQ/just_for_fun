@@ -9,7 +9,9 @@ import concurrent.futures
 SIZE=1000000
 THREADS=4
 CHUNK_SIZE= SIZE // THREADS
-DATA = [random.randint(1,100) for _ in range(SIZE)]
+MIN_VALUE = 1
+MAX_VALUE = 100
+DATA = [random.randint(MIN_VALUE, MAX_VALUE) for _ in range(SIZE)]
 
 
 def func(start, end):
@@ -17,7 +19,7 @@ def func(start, end):
 
 if __name__ == "__main__":
     sum_value = 0
-    with concurrent.futures.ThreadPoolExecutor(4) as executor:
+    with concurrent.futures.ThreadPoolExecutor(THREADS) as executor:
         futures = [executor.submit(func, i * CHUNK_SIZE, (i+1) * CHUNK_SIZE) for i in range(THREADS)]
         results = [f.result() for f in futures]
         sum_value = functools.reduce(lambda s, i: s + i, results)
