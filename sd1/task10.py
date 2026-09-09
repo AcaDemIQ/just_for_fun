@@ -23,3 +23,8 @@ if __name__ == "__main__":
         sum_value = functools.reduce(lambda s, i: s + i, results)
     print(sum_value)
 
+
+
+
+
+
