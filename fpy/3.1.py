@@ -8,8 +8,8 @@ def tag(tag, s):
 
 print(tag('b', 'string'))
 
-b = tag('b')
-i = tag('i')
+bold = tag('b')
+italic = tag('i')
 
-print(b('str'))
-print(i('str'))
+print(bold('str'))
+print(italic('str'))
