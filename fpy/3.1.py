@@ -7,3 +7,9 @@ def tag(tag, s):
     return f'<{tag}>{s}</{tag}>'
 
 print(tag('b', 'string'))
+
+b = tag('b')
+i = tag('i')
+
+print(b('str'))
+print(i('str'))
