@@ -4,8 +4,7 @@ let rec pow = function
   | (s, n) -> s + pow(s, n-1)
 
 // 17.2
-let rec isIthChar (s, n ,c)  = 
-  let (typedS: string) = s
+let rec isIthChar (s: string, n ,c)  = 
   s.[n] = c
 
 // 17.3
