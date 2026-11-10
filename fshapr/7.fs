@@ -5,7 +5,6 @@ let vat n x = x + float (n) / 100.0 * x
 let unvat n x = x / (1.0 + float(n)/100.0)
 
 // 20.3.3
-
 let min f = 
   let rec _min = function
     | (f, n) when f(n) = 0 -> n
