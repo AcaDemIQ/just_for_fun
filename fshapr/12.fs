@@ -15,7 +15,6 @@ let rec dnto (n: int) =
 // 34.3
 let rec evenn n = 
   let rec _even = function
-  | m when m > n -> []
-  | m -> m :: _even (m + 2)
-  _even 0
-
+    | (current, acc) when current < 0 -> acc
+    | (current, acc) -> _even (current - 2, current :: acc)
+  _even (2*(n-1), [])
