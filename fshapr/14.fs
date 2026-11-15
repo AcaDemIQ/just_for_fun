@@ -1,7 +1,7 @@
 // 40.1
-let rec sum (p, xs) = 
+let rec sum (p: int -> bool, xs: int list): int = 
   match xs with
-  | head :: tail when (p head) -> 1 + sum(p, tail)
+  | head :: tail when (p head) -> head + sum(p, tail)
   | head :: tail -> sum(p, tail)
   | [] -> 0
 
