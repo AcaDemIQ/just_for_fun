@@ -1,5 +1,6 @@
 // 50.2.1
 let fac_seq = seq {
+  yield 1
   let mutable acc1: int = 1
   for i in Seq.initInfinite (fun i -> i + 1) do
     acc1 <- acc1 * i
