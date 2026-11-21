@@ -1,13 +1,5 @@
 type 'a cell = Nil | Cons of 'a * Lazy<'a cell>
 
-
-
-let rec nat (n:int) : int cell = Cons (n, lazy(nat(n+1)))
-
-let n0 = nat 0
-
-
-
 let hd (s : 'a cell) : 'a =
   match s with
     Nil -> failwith "hd"
